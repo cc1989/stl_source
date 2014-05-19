@@ -28,6 +28,8 @@ class testClass2<const T*, T*>
 	public:
 	testClass2(){std::cout << "const T*, T*" << std::endl;}
 };
+
+//__STL_FUNCTION_TMPL_PARTIAL_ORDER
 class MyAlloc
 {
 };
@@ -36,6 +38,15 @@ class MyVector
 {
 	public:
 		void swap(MyVector<T, Alloc>&){std::cout << "swap()" << std::endl;}
+		//__STL_EXPLICIT_FUNCTION_TMPL_ARGS
+		typedef T value_type;
+		typedef value_type* iterator;
+
+		template <class I>
+		void insert(iterator position, I first, I last)
+		{
+			std::cout << "insert()" << std::endl;
+		}
 };
 
 namespace std

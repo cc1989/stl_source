@@ -37,7 +37,10 @@ int main(int argc, char **argv)
 
 	MyVector<int> x, y;
 	std::swap(x, y);
-	
+
+	int ia[5] = {0, 1, 2, 3, 4};
+	MyVector<int>::iterator ite;
+	x.insert(ite, ia, ia + 5);
 	std::cout << "program endl" << std::endl;
 	return 0;
 }
