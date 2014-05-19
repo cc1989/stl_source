@@ -43,6 +43,9 @@ int main(int argc, char **argv)
 	x.insert(ite, ia, ia + 5);
 
 	stack<int> sx;
+
+	std::cout << deque<int>::iterator::buffer_size() << std::endl;
+	std::cout << deque<int, MyAlloc, 64>::iterator::buffer_size() << std::endl;
 	std::cout << "program endl" << std::endl;
 	return 0;
 }
