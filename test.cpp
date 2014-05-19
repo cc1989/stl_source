@@ -41,6 +41,8 @@ int main(int argc, char **argv)
 	int ia[5] = {0, 1, 2, 3, 4};
 	MyVector<int>::iterator ite;
 	x.insert(ite, ia, ia + 5);
+
+	stack<int> sx;
 	std::cout << "program endl" << std::endl;
 	return 0;
 }
