@@ -122,4 +122,44 @@ public:
 	}
 };
 
+//实现operator*,operator++,operator--
+class INT
+{
+	friend std::ostream& operator<< (std::ostream& os, const INT& i);
+public:
+	INT(int i) : m_i(i) {}
 
+	//++前置
+	INT& operator++()
+	{
+		++(this->m_i);
+		return *this;
+	}
+	//++后置
+	const INT operator++(int)
+	{
+		INT temp = *this;
+		++(this->m_i);
+		return temp;
+	}
+	//--前置
+	INT& operator--()
+	{
+		--(this->m_i);
+		return *this;
+	}
+	//--后置
+	const INT operator--(int)
+	{
+		INT temp = *this;
+		--(this->m_i);
+		return temp;
+	}
+	//*	
+	int& operator*() const
+	{
+		return (int&)m_i;
+	}
+private:
+	int m_i;
+};

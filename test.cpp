@@ -6,7 +6,11 @@
 #include <stdexcept>
 #include <typeinfo>
 
-
+std::ostream& operator<<(std::ostream& os, const INT& i)
+{
+	os << '[' << i.m_i << ']';
+	return os;
+}
 template<>
 int testClass<int>::_data = 1;
 template<>
@@ -55,6 +59,13 @@ int main(int argc, char **argv)
 	std::cout << testClass<int>::_datai << std::endl;
 	std::cout << testClass<int>::_datal << std::endl;
 	std::cout << testClass<int>::_datac << std::endl;
+
+	INT I(5);
+	std::cout << I++ << std::endl;
+	std::cout << ++I << std::endl;
+	std::cout << I-- << std::endl;
+	std::cout << --I << std::endl;
+	std::cout << *I << std::endl;
 	std::cout << "program endl" << std::endl;
 	return 0;
 }
