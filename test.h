@@ -8,7 +8,24 @@ class testClass
 {
 	public:
 		static int _data;
+		//静态常量整数成员在class内部直接初始化,也可以在类外部初始化
+		static const int _datai;
+		static const long _datal = 3L;
+		static const char _datac = 'c';
+		//const非静态成员变量只能用初始化列表初始化
+		const int cdata;
+		testClass()
+			:cdata(1)
+		{}
 };
+/*
+//只有类的静态成员可以这样用
+template <typename T>
+const int testClass<T>::cdata = 1;
+*/
+template <typename T>
+const int testClass<T>::_datai = 1;
+
 //测试__STL_CLASS_PARTIAL_SPECIALIZATION
 template <class I, class O>
 class testClass2
@@ -104,3 +121,5 @@ public:
 		std::cout << elem << " ";	
 	}
 };
+
+

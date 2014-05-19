@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <typeinfo>
 
+
 template<>
 int testClass<int>::_data = 1;
 template<>
@@ -50,6 +51,10 @@ int main(int argc, char **argv)
 	//产生临时对象
 	std::vector<int> iv(ia, ia + 5);
 	std::for_each(iv.begin(), iv.end(), print<int>());
+
+	std::cout << testClass<int>::_datai << std::endl;
+	std::cout << testClass<int>::_datal << std::endl;
+	std::cout << testClass<int>::_datac << std::endl;
 	std::cout << "program endl" << std::endl;
 	return 0;
 }
