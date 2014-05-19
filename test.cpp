@@ -46,6 +46,10 @@ int main(int argc, char **argv)
 
 	std::cout << deque<int>::iterator::buffer_size() << std::endl;
 	std::cout << deque<int, MyAlloc, 64>::iterator::buffer_size() << std::endl;
+
+	//产生临时对象
+	std::vector<int> iv(ia, ia + 5);
+	std::for_each(iv.begin(), iv.end(), print<int>());
 	std::cout << "program endl" << std::endl;
 	return 0;
 }

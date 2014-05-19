@@ -94,3 +94,13 @@ private:
 	Sequence c;
 };
 
+//产生临时对象
+template <class T>
+class print
+{
+public:
+	void operator() (const T& elem)
+	{
+		std::cout << elem << " ";	
+	}
+};
