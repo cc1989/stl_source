@@ -66,6 +66,13 @@ int main(int argc, char **argv)
 	std::cout << I-- << std::endl;
 	std::cout << --I << std::endl;
 	std::cout << *I << std::endl;
+
+	INT *p = (INT *)::operator new(sizeof(INT));
+	new(p) INT(I);
+	std::cout << **p << std::endl;
+
+	int i;
+	//func(&i);
 	std::cout << "program endl" << std::endl;
 	return 0;
 }

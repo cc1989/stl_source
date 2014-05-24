@@ -163,3 +163,17 @@ public:
 private:
 	int m_i;
 };
+
+//利用函数模板推导迭代器所指之物的类型
+template <class I, class T>
+void func_impl(I iter, T t)
+{
+	T tmp;  //这里就解决了问题，T就是迭代器所指之物的类型
+	std::cout << "类型获取成功" << std::endl;
+}
+
+template <class I>
+inline void func(I iter)
+{
+	func_impl(iter, *iter);
+}
