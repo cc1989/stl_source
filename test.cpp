@@ -36,9 +36,9 @@ int main(int argc, char **argv)
 	std::cout << objc1._data << std::endl;
 	std::cout << objc2._data << std::endl;
 
-	testClass2<int, char> obj1;
-	testClass2<int*, char*> obj2;
-	testClass2<const int*, char*> obj3;
+	testClass2<int> obj1;
+	testClass2<int*> obj2;
+	testClass2<const int*> obj3;
 
 	MyVector<int> x, y;
 	std::swap(x, y);
@@ -75,6 +75,8 @@ int main(int argc, char **argv)
 	func(&i);*/
 	MyIter<int> iter(new int(8));
 	std::cout << func(iter) << std::endl;
+	int i = 7;
+	std::cout << func(&i) << std::endl;
 	std::cout << "program endl" << std::endl;
 	return 0;
 }

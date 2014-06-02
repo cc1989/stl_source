@@ -27,7 +27,7 @@ template <typename T>
 const int testClass<T>::_datai = 1;
 
 //测试__STL_CLASS_PARTIAL_SPECIALIZATION
-template <class I, class O>
+template <class I>
 class testClass2
 {
 	public:
@@ -35,13 +35,13 @@ class testClass2
 };
 //特殊化
 template <class T>
-class testClass2<T*, T*>
+class testClass2<T*>
 {
 	public:
 	testClass2(){std::cout << "T*, T*" << std::endl;}
 };
 template <class T>
-class testClass2<const T*, T*>
+class testClass2<const T*>
 {
 	public:
 	testClass2(){std::cout << "const T*, T*" << std::endl;}
@@ -177,7 +177,18 @@ inline void func(I iter)
 {
 	func_impl(iter, *iter);
 }*/
-
+//traits模板部分特化
+template <class I>
+struct iterator_cc_traits
+{
+	typedef typename I::value_type value_type;
+};
+//针对指针类型
+template <class I>
+struct iterator_cc_traits<I*>
+{
+	typedef I value_type;
+};
 //声明内嵌类型
 template <class  T>
 struct MyIter
@@ -188,8 +199,9 @@ struct MyIter
 	T& operator*() const {return *ptr;} 
 };
 template <class I>
-typename I::value_type
+typename iterator_cc_traits<I>::value_type  
 func(I ite)
 {
 	return *ite;
 }
+
