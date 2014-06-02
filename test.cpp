@@ -71,8 +71,10 @@ int main(int argc, char **argv)
 	new(p) INT(I);
 	std::cout << **p << std::endl;
 
-	int i;
-	//func(&i);
+	/*int i;
+	func(&i);*/
+	MyIter<int> iter(new int(8));
+	std::cout << func(iter) << std::endl;
 	std::cout << "program endl" << std::endl;
 	return 0;
 }

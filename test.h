@@ -164,7 +164,7 @@ private:
 	int m_i;
 };
 
-//利用函数模板推导迭代器所指之物的类型
+/*//利用函数模板推导迭代器所指之物的类型
 template <class I, class T>
 void func_impl(I iter, T t)
 {
@@ -176,4 +176,20 @@ template <class I>
 inline void func(I iter)
 {
 	func_impl(iter, *iter);
+}*/
+
+//声明内嵌类型
+template <class  T>
+struct MyIter
+{
+	typedef T value_type;
+	T * ptr;
+	MyIter(T* p = 0): ptr(p) {}
+	T& operator*() const {return *ptr;} 
+};
+template <class I>
+typename I::value_type
+func(I ite)
+{
+	return *ite;
 }
